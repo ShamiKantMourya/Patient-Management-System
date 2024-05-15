@@ -93,7 +93,7 @@ export default function PatientForm({
         >
           <option value="">Select </option>
           {wards?.map((item) => (
-            <option value={item.wardNumber}>Ward {item.wardNumber}</option>
+            <option key={item._id} value={item.wardNumber}>Ward {item.wardNumber}</option>
           ))}
         </select>
       </label>
