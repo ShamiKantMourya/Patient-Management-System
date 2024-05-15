@@ -4,7 +4,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import StorageIcon from "@mui/icons-material/Storage";
 export default function Header() {
   return (
-    <>
+    <div className="header">
       <div className="logo">Hospital</div>
       <nav>
         <NavLink to="/">Home</NavLink>
@@ -23,6 +23,6 @@ export default function Header() {
           <StorageIcon />
         </NavLink>
       </nav>
-    </>
+    </div>
   );
 }
