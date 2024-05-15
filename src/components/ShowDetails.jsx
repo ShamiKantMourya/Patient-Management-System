@@ -41,7 +41,7 @@ export default function ShowDetails() {
     type === "wards"
       ? wards?.find((item) => item._id === id)
       : patients?.find((item) => item._id === id);
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     dispatch(fetchWards());
     dispatch(fetchPatients());
@@ -52,21 +52,38 @@ export default function ShowDetails() {
       <h4>{type?.toUpperCase()} </h4>
 
       <div>
-        {Object?.name ? (
-          Object.keys(data ?? {}).map(
-            (key) =>
-              key !== "_id" &&
-              key !== "__v" && (
-                <p>
-                  {key[0].toUpperCase() + key.slice(1)} :
-                  <b>
-                    <i> {data[key]} </i>
-                  </b>{" "}
-                </p>
-              )
-          )
+        {type === "wards" ? (
+          <>
+            <p className="ward">
+              Ward Number: <span>{data.wardNumber}</span>
+            </p>
+            <p className="ward">
+              Capacity: <span>{data.capacity}</span>
+            </p>
+            <p className="ward">
+              Specialization: <span>{data.specialization}</span>
+            </p>
+          </>
         ) : (
-          <p>No data found for this Id</p>
+          <>
+            <p>
+              Name: <span>{data.name}</span>
+            </p>
+            <p>
+              Age: <span>{data.age}</span>
+            </p>
+            <p>
+              Gender: <span>{data.gender}</span>
+            </p>
+            <p>
+              Medical History:{" "}
+              {data.medicalHistory?.map((item, index) => (
+                <>
+                  <span key={index}>{(index ? ", " : "") + item}</span>
+                </>
+              ))}
+            </p>
+          </>
         )}
       </div>
       <button onClick={handleOpen}>Edit Data</button>
