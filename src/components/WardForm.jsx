@@ -1,14 +1,13 @@
-
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-export default function WardForm({ preData, type, submitFunction ,onClose }) {
+export default function WardForm({ preData, type, submitFunction, onClose }) {
   const dispatch = useDispatch();
   const initialValue = {
-    wardNumber: '',
-    capacity: '',
-    specialization: ''
-  }
+    wardNumber: "",
+    capacity: "",
+    specialization: "",
+  };
   const [formData, setFormData] = useState(preData ?? initialValue);
 
   const handleChange = (event) => {
@@ -16,20 +15,19 @@ export default function WardForm({ preData, type, submitFunction ,onClose }) {
     setFormData({ ...formData, [name]: value });
   };
 
-  console.log(formData)
+  // console.log(formData)
   const handleSubmit = (event) => {
     event.preventDefault();
     if (type === "add") {
-      dispatch(submitFunction(formData))
+      dispatch(submitFunction(formData));
+    } else if (type === "update") {
+      dispatch(submitFunction({ id: preData._id, formData }));
     }
-    else if (type === 'update') {
-      dispatch(submitFunction({ id: preData._id, formData }))
+    setFormData(initialValue);
+    if (onClose) {
+      onClose();
     }
-    setFormData(initialValue)
-    if(onClose){
-      onClose()
-    }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
