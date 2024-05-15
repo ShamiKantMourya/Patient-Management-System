@@ -1,12 +1,19 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import PatientForm from "../../components/PatientsForm";
 
+import { fetchPatients } from "./patientSlice";
+import PatientForm from "../../components/PatientsForm";
 import { addPatients } from "./patientSlice";
+
 
 export default function Patient() {
   const { patients } = useSelector((state) => state.patients);
-// console.log(patients, "patients")
+  // console.log(patients, "patients");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchPatients());
+  }, [dispatch]);
   return (
     <div>
       <h3>Patients View</h3>

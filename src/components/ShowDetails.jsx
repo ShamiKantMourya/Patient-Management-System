@@ -78,9 +78,7 @@ export default function ShowDetails() {
             <p>
               Medical History:{" "}
               {data.medicalHistory?.map((item, index) => (
-                <>
                   <span key={index}>{(index ? ", " : "") + item}</span>
-                </>
               ))}
             </p>
           </>

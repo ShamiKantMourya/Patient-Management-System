@@ -13,7 +13,7 @@ export default function Dashboard() {
     <div className="dashboard">
       <h2>Welcome to Patient Management System</h2>
       <p>Users can view hospital-wide data.</p>
-      <p>
+      <div>
         <p>
           Total Number of patients :<b> {patients?.length}</b>
         </p>
@@ -21,7 +21,7 @@ export default function Dashboard() {
           Current Occupancy Rate:{" "}
           <b>{Math.ceil((patients?.length / totalCapacity) * 100)}%</b>
         </p>
-      </p>
+      </div>
     </div>
   );
 }

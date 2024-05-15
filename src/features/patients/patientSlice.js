@@ -14,6 +14,7 @@ export const fetchPatients = createAsyncThunk(
 export const addPatients = createAsyncThunk(
   "/patients/addPatients",
   async (bodyData) => {
+    console.log(bodyData, "body data")
     const response = await axios.post(`${API_URL}/api/v1/patients`, bodyData);
     return response.data.patient;
   }
@@ -21,14 +22,15 @@ export const addPatients = createAsyncThunk(
 export const deletePatientData = createAsyncThunk(
   "/patients/deletePatient",
   async (id) => {
-    const response = await axios.delete(`${API_URL}/api/v1/${id}`);
+    // console.log(id, "patient id")
+    const response = await axios.delete(`${API_URL}/api/v1/patients/${id}`);
     return response.data.patient;
   }
 );
 export const updatePatients = createAsyncThunk(
   "/wards/updatePatients",
   async ({ id, formData }) => {
-    const response = await axios.put(
+    const response = await axios.post(
       `${API_URL}/api/v1/patients/${id}`,
       formData
     );

@@ -1,11 +1,16 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import WardForm from "../../components/WardForm";
-import { addWards } from "./wardSlice";
+import { addWards, fetchWards } from "./wardSlice";
 
 export default function Wards() {
   const { wards } = useSelector((state) => state.wards);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchWards());
+  }, [dispatch]);
   return (
     <div>
       <h3>Wards View</h3>

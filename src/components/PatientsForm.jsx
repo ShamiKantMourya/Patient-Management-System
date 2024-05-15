@@ -23,7 +23,7 @@ export default function PatientForm({
     setFormData({ ...formData, [name]: value });
   };
 
-  //   console.log(formData)
+    // console.log(formData)
   const handleSubmit = (event) => {
     event.preventDefault();
     if (type === "add") {
@@ -93,7 +93,7 @@ export default function PatientForm({
         >
           <option value="">Select </option>
           {wards?.map((item) => (
-            <option key={item._id} value={item.wardNumber}>Ward {item.wardNumber}</option>
+            <option key={item._id} value={item._id}>Ward {item.wardNumber}</option>
           ))}
         </select>
       </label>

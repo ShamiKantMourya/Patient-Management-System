@@ -18,6 +18,7 @@ export const addWards = createAsyncThunk(
 export const deleteWardData = createAsyncThunk(
   "/wards/deleteWardData",
   async (id) => {
+    // console.log(id, "ward id")
     const response = await axios.delete(`${API_URL}/api/v1/wards/${id}`);
     return response.data.ward;
   }
