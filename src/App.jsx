@@ -25,7 +25,6 @@ function App() {
       <header>
         <Header />
       </header>
-
       <main>
         {pLoading === "loading" || wLoading === "loading" ? (
           <div className="loader"></div>
