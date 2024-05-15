@@ -10,7 +10,7 @@ export default function Dashboard() {
   }, 0);
 
   return (
-    <>
+    <div className="dashboard">
       <h2>Welcome to Patient Management System</h2>
       <p>Users can view hospital-wide data.</p>
       <p>
@@ -22,6 +22,6 @@ export default function Dashboard() {
           <b>{Math.ceil((patients?.length / totalCapacity) * 100)}%</b>
         </p>
       </p>
-    </>
+    </div>
   );
 }
