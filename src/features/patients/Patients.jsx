@@ -6,7 +6,7 @@ import { addPatients } from "./patientSlice";
 
 export default function Patient() {
   const { patients } = useSelector((state) => state.patients);
-
+// console.log(patients, "patients")
   return (
     <div>
       <h3>Patients View</h3>
