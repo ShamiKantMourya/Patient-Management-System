@@ -7,6 +7,7 @@ export const fetchPatients = createAsyncThunk(
   "/patients/fetchPatients",
   async () => {
     const response = await axios.get(`${API_URL}/api/v1/patients`);
+    // console.log(response, "patient response");
     return response?.data?.patient;
   }
 );
@@ -43,65 +44,66 @@ export const patientSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    [fetchPatients.fulfilled],
+    builder.addCase(fetchPatients.fulfilled,
       (state, action) => {
+        // console.log(state, "state");
         state.patients = action.payload;
         state.status = "success";
         state.error = null;
-      },
-      [fetchPatients.rejected],
+      }),
+      builder.addCase(fetchPatients.rejected,
       (state, action) => {
         state.error = action.payload;
         state.status = "success";
-      },
-      [fetchPatients.pending],
+      }),
+      builder.addCase(fetchPatients.pending,
       (state) => {
         state.status = "loading";
-      },
-      [addPatients.fulfilled],
+      }),
+      builder.addCase(addPatients.fulfilled,
       (state, action) => {
         state.patients = [action.payload, ...state.patients];
         state.status = "success";
         state.error = null;
-      },
-      [addPatients.rejected],
+      }),
+      builder.addCase(addPatients.rejected,
       (state, action) => {
         state.error = action.payload;
-      },
-      [addPatients.pending],
+      }),
+      builder.addCase(addPatients.pending,
       (state) => {
         state.status = "loading";
-      },
-      [deletePatientData.fulfilled],
+      }),
+      builder.addCase(deletePatientData.fulfilled,
       (state, action) => {
         state.patients = action.payload;
         state.status = "success";
         state.error = null;
-      },
-      [deletePatientData.rejected],
+      }),
+      builder.addCase(deletePatientData.rejected,
       (state, action) => {
         state.error = action.payload;
         state.status = "success";
-      },
-      [deletePatientData.pending],
+      }),
+      builder.addCase(deletePatientData.pending,
       (state) => {
         state.status = "loading";
-      },
-      [updatePatients.fulfilled],
+      }),
+      builder.addCase(updatePatients.fulfilled,
       (state, action) => {
         state.patients = action.payload;
         state.status = "success";
         state.error = null;
-      },
-      [updatePatients.rejected],
+      }),
+      builder.addCase(updatePatients.rejected,
       (state, action) => {
         state.error = action.payload;
         state.status = "success";
-      },
-      [updatePatients.pending],
+      }),
+      builder.addCase(updatePatients.pending,
       (state) => {
         state.status = "loading";
-      };
+      });
   },
 });
 

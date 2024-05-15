@@ -39,65 +39,53 @@ export const wardSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    [fetchWards.fulfilled],
-      (state, action) => {
-        console.log(action);
-        state.wards = action.payload;
-        state.status = "success";
-        state.error = null;
-      },
-      [fetchWards.rejected],
-      (state, action) => {
+    builder.addCase(fetchWards.fulfilled, (state, action) => {
+      // console.log(action);
+      state.wards = action.payload;
+      state.status = "success";
+      state.error = null;
+    }),
+      builder.addCase(fetchWards.rejected, (state, action) => {
         state.error = action.payload;
-      },
-      [fetchWards.pending],
-      (state) => {
+      }),
+      builder.addCase(fetchWards.pending, (state) => {
         state.status = "loading";
-      },
-      [addWards.fulfilled],
-      (state, action) => {
+      }),
+      builder.addCase(addWards.fulfilled, (state, action) => {
         state.wards = [action.payload, ...state.wards];
         state.status = "success";
         state.error = null;
-      },
-      [addWards.rejected],
-      (state, action) => {
+      }),
+      builder.addCase(addWards.rejected, (state, action) => {
         state.error = action.payload;
-      },
-      [addWards.pending],
-      (state) => {
+      }),
+      builder.addCase(addWards.pending, (state) => {
         state.status = "loading";
-      },
-      [deleteWardData.fulfilled],
-      (state, action) => {
+      }),
+      builder.addCase(deleteWardData.fulfilled, (state, action) => {
         state.wards = action.payload;
         state.status = "success";
         state.error = null;
-      },
-      [deleteWardData.rejected],
-      (state, action) => {
+      }),
+      builder.addCase(deleteWardData.rejected, (state, action) => {
         state.error = action.payload;
         state.status = "success";
-      },
-      [deleteWardData.pending],
-      (state) => {
+      }),
+      builder.addCase(deleteWardData.pending, (state) => {
         state.status = "loading";
-      },
-      [updateWards.fulfilled],
-      (state, action) => {
+      }),
+      builder.addCase(updateWards.fulfilled, (state, action) => {
         state.wards = action.payload;
         state.status = "success";
         state.error = null;
-      },
-      [updateWards.rejected],
-      (state, action) => {
+      }),
+      builder.addCase(updateWards.rejected, (state, action) => {
         state.error = action.payload;
         state.status = "success";
-      },
-      [updateWards.pending],
-      (state) => {
+      }),
+      builder.addCase(updateWards.pending, (state) => {
         state.status = "loading";
-      };
+      });
   },
 });
 
