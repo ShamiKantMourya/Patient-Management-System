@@ -21,6 +21,7 @@ export default function WardForm({ preData, type, submitFunction, onClose }) {
     if (type === "add") {
       dispatch(submitFunction(formData));
     } else if (type === "update") {
+      console.log(preData._id, "id event")
       dispatch(submitFunction({ id: preData._id, formData }));
     }
     setFormData(initialValue);

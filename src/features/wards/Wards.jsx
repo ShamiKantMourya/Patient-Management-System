@@ -12,7 +12,7 @@ export default function Wards() {
     dispatch(fetchWards());
   }, [dispatch]);
   return (
-    <div>
+    <div className="wardData">
       <h3>Wards View</h3>
       <WardForm type="add" submitFunction={addWards} />
       <ul>
